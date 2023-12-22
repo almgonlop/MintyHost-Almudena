@@ -23,10 +23,10 @@ export default {
     return {
       mostrarModal: false,
       rangoPrecio: {
-        min: 2999,
-        max: 3000,
+        min: 1,
+        max: 30000,
       },
-      numDormitorios: 2,
+      numDormitorios: 1,
       capacidadMaxima: 3,
     };
   },
@@ -43,7 +43,8 @@ export default {
         numDormitorios: this.numDormitorios,
         capacidadMaxima: this.capacidadMaxima,
       });
-      this.cerrarModal();
+      // Mueve esta línea fuera del método para que el modal no se cierre automáticamente
+      // this.cerrarModal();
     },
   },
 };

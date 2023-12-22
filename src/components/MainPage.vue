@@ -2,29 +2,20 @@
   <div>
     <NavbarResponsive />
     <div class="container mx-auto mt-7">
-    <LogoMintyHost />
-    <ListadoPaginas />
-    <SelectorIdioma />
-    <FiltrosPanel @filtrarApartamentos="filtrarApartamentos" />
-    <ApartmentList :apartamentos="apartamentosFiltrados" />
-        <!-- Mostrar los apartamentos filtrados -->
-      <div v-if="apartamentosFiltrados.length > 0">
-        <h2>Apartamentos Filtrados:</h2>
-        <ul>
-          <li v-for="apartamento in apartamentosFiltrados" :key="apartamento.id">
-            {{ apartamento.apartment_title }} - {{ apartamento.address }}
-          </li>
-        </ul>
+      <LogoMintyHost />
+      <ListadoPaginas />
+      <SelectorIdioma />
+      <FiltrosPanel @filtrarApartamentos="filtrarApartamentos" />
+      <ApartmentList :apartamentos="apartamentosFiltrados" />
+      <!-- Mostrar mensaje si no hay resultados -->
+      <div v-if="sinResultados">
+        <p>No se encontraron apartamentos con los filtros seleccionados.</p>
       </div>
-      <div v-else-if="sinResultados">
-  <p>No se encontraron apartamentos con los filtros seleccionados.</p>
-</div>
-
-<!-- Mostrar mensaje por defecto -->
-<div v-else>
-  <p>Selecciona un barrio y aplica filtros para buscar apartamentos.</p>
-</div>
-  </div>
+      <!-- Mostrar mensaje por defecto -->
+      <div v-else-if="apartamentosFiltrados.length === 0">
+        <p>Selecciona un barrio y aplica filtros para buscar apartamentos.</p>
+      </div>
+    </div>
   </div>
 </template>
 
