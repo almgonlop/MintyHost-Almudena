@@ -4,17 +4,14 @@
     ¡Hola, este es mi componente Vue con Tailwind CSS!
   </div>
   <MainPage />
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import MainPage from './components/MainPage.vue';
 export default {
   name: 'App',
   components: {
-    MainPage,
-    HelloWorld
+    MainPage
   }
 }
 </script>

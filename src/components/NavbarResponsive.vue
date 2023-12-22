@@ -14,6 +14,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* Estilos específicos para NavbarResponsive si es necesario */
 </style>
