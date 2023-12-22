@@ -1,3 +1,4 @@
+<!-- FilterModal.vue -->
 <template>
   <div class="bg-green-900 p-4">
     <button @click="abrirModal">Abrir Modal</button>
@@ -11,8 +12,6 @@
       
       <label>Capacidad Máxima de Huéspedes:</label>
       <input type="number" v-model="capacidadMaxima">
-      
-      <button @click="aplicarFiltros">Aplicar Filtros</button>
     </div>
   </div>
 </template>
@@ -30,6 +29,24 @@ export default {
       capacidadMaxima: 3,
     };
   },
+  watch: {
+    rangoPrecio: {
+      handler() {
+        this.aplicarFiltros();
+      },
+      deep: true,
+    },
+    numDormitorios: {
+      handler() {
+        this.aplicarFiltros();
+      },
+    },
+    capacidadMaxima: {
+      handler() {
+        this.aplicarFiltros();
+      },
+    },
+  },
   methods: {
     abrirModal() {
       this.mostrarModal = true;
@@ -38,18 +55,19 @@ export default {
       this.mostrarModal = false;
     },
     aplicarFiltros() {
+      // Emite el evento con la información necesaria
       this.$emit('aplicarFiltros', {
         rangoPrecio: { min: this.rangoPrecio.min, max: this.rangoPrecio.max },
         numDormitorios: this.numDormitorios,
         capacidadMaxima: this.capacidadMaxima,
       });
+
       // Mueve esta línea fuera del método para que el modal no se cierre automáticamente
       // this.cerrarModal();
     },
   },
 };
 </script>
-
 
 <style scoped>
 /* Estilos específicos para el modal de filtros */

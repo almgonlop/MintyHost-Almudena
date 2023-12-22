@@ -1,17 +1,18 @@
+<!-- SearchButton.vue -->
 <template>
-  <button @click="buscar">Buscar</button>
+  <button @click="filtrarYBuscar">Buscar</button>
 </template>
 
 <script>
 export default {
   methods: {
-    buscar() {
-      this.$emit('buscar');
+    filtrarYBuscar() {
+      // Emite el evento con la información necesaria
+      this.$emit('filtrarYBuscar');
     },
   },
 };
 </script>
-
 
 <style scoped>
 /* Estilos específicos para el botón de búsqueda */
