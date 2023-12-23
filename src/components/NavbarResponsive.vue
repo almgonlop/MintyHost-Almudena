@@ -102,18 +102,6 @@ export default {
   align-items: center;
 }
 
-.navbar-link {
-  color: white;
-  margin-right: 1.5rem;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.navbar-link:hover {
-  color: #FFD700;
-}
-
 .hamburger-btn {
   color: white;
   cursor: pointer;
@@ -121,10 +109,6 @@ export default {
 }
 
 .hamburger-btn:hover {
-  color: #FFD700;
-}
-
-.hamburger-btn-active {
   color: #FFD700;
 }
 
