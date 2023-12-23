@@ -102,6 +102,7 @@ export default {
   align-items: center;
 }
 
+
 .hamburger-btn {
   color: white;
   cursor: pointer;
@@ -111,6 +112,7 @@ export default {
 .hamburger-btn:hover {
   color: #FFD700;
 }
+
 
 .mobile-menu {
   position: absolute;

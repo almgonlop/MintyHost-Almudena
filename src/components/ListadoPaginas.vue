@@ -26,7 +26,7 @@ export default {
   methods: {
     checkScreenWidth() {
       // Cambia la clase según el ancho de la pantalla
-      this.listadoClass = window.innerWidth < 768 ? 'flex flex-col' : 'flex';
+      this.listadoClass = window.innerWidth < 768 ? 'flex flex-col p-4' : 'flex';
     },
   },
 };
