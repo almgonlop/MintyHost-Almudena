@@ -2,9 +2,6 @@
   <div>
     <NavbarResponsive />
     <div class="container mx-auto mt-7">
-      <LogoMintyHost />
-      <ListadoPaginas />
-      <SelectorIdioma />
       <FiltrosPanel @filtrarApartamentos="filtrarApartamentos" />
       <ApartmentList :apartamentos="apartamentosFiltrados" />
       <!-- Mostrar mensaje si no hay resultados -->
@@ -21,9 +18,6 @@
 
 <script>
 import NavbarResponsive from '@/components/NavbarResponsive.vue';
-import LogoMintyHost from '@/components/LogoMintyHost.vue';
-import ListadoPaginas from '@/components/ListadoPaginas.vue';
-import SelectorIdioma from '@/components/SelectorIdioma.vue';
 import FiltrosPanel from '@/components/FiltrosPanel.vue';
 import ApartmentList from '@/components/ApartmentList.vue';
 import axios from 'axios';
@@ -31,9 +25,6 @@ import axios from 'axios';
 export default {
   components: {
     NavbarResponsive,
-    LogoMintyHost,
-    ListadoPaginas,
-    SelectorIdioma,
     FiltrosPanel,
     ApartmentList
   },

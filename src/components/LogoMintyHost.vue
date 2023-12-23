@@ -1,7 +1,7 @@
 <!-- src/components/LogoMintyHost.vue -->
 <template>
-  <div class="bg-yellow-100">
-    <img src="https://www.mintyhost.com/wp-content/uploads/2023/06/mintyhost-logotipo.svg" alt="Logo Minty Host">
+  <div class="logo">
+    <img src="https://www.mintyhost.com/wp-content/uploads/2023/06/mintyhost-logotipo.svg" alt="Logo Minty Host" >
   </div>
 </template>
 
@@ -13,4 +13,8 @@ export default {
 
 <style>
 /* Estilos específicos para LogoMintyHost si es necesario */
+.logo {
+  width: 250px;
+  height: auto;
+}
 </style>

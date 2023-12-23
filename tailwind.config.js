@@ -3,7 +3,7 @@ module.exports = {
   content: ['./src/**/*.{html,js,vue,ts,jsx,tsx}'],
   theme: {
     colors: {
-      'green': '#009483',
+      'white': '#FFFFFF',
       'yellow': {
         100: '#FFD558',
         900: '#FFC82C',
