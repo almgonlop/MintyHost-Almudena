@@ -30,14 +30,11 @@ export default {
     toggleDropdown() {
       this.isDropdownVisible = !this.isDropdownVisible;
       if (this.isDropdownVisible) {
-        // Agrega un manejador de eventos al documento para cerrar el desplegable
         document.addEventListener('click', this.closeDropdownHandler);
       }
     },
     closeDropdownHandler(event) {
-      // Espera al próximo ciclo de actualización de Vue antes de acceder a $refs
       this.$nextTick(() => {
-        // Verifica si el clic fue fuera del elemento .custom-dropdown
         if (this.$refs.dropdown && !this.$refs.dropdown.contains(event.target)) {
           this.isDropdownVisible = false;
           document.removeEventListener('click', this.closeDropdownHandler);
@@ -45,12 +42,12 @@ export default {
       });
     },
 selectBarrio(barrio) {
-  this.nombre = barrio.name; // Cambia a barrio.id en lugar de barrio.name
-  this.selectedBarrio = barrio.id; // Cambia a barrio.id en lugar de barrio.name
+  this.nombre = barrio.name; 
+  this.selectedBarrio = barrio.id; 
   this.isDropdownVisible = false;
   document.removeEventListener('click', this.closeDropdownHandler);
 
-  // Llama a la función emitBarrioSeleccionado aquí
+  
   this.emitBarrioSeleccionado();
 },
     cargarBarrios() {
@@ -74,7 +71,6 @@ selectBarrio(barrio) {
     this.cargarBarrios();
   },
   beforeUnmount() {
-    // Asegúrate de limpiar el manejador de eventos al destruir el componente
     document.removeEventListener('click', this.closeDropdownHandler);
   },
 };
@@ -86,7 +82,7 @@ selectBarrio(barrio) {
 .custom-dropdown {
   position: relative;
   display: flex;
-  justify-content: center; /* Centra los elementos horizontalmente */
+  justify-content: center;
   align-items: center;
   
   
@@ -142,9 +138,9 @@ selectBarrio(barrio) {
   background-color: #c9ffd4;
 }
 .icon {
-  width: 16px; /* Ajusta el tamaño del icono según tus necesidades */
+  width: 16px; 
   height: 16px;
-  margin-right: 0.2rem; /* Ajusta el espacio entre el icono y el texto */
+  margin-right: 0.2rem; 
   margin-top: 3px;
 }
 </style>

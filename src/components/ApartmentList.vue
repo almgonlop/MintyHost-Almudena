@@ -19,9 +19,7 @@ export default {
   },
   computed: {
     uniqueApartamentos() {
-      // Utiliza un conjunto (Set) para eliminar duplicados
       const uniqueSet = new Set(this.apartamentos.map(apartamento => apartamento.id));
-      // Convierte el conjunto nuevamente a una matriz
       return Array.from(uniqueSet, id => this.apartamentos.find(apartamento => apartamento.id === id));
     }
   }
@@ -29,16 +27,15 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos específicos para la lista de apartamentos */
 .apartment-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centra las tarjetas horizontalmente */
+  justify-content: center;
   margin-top: 20px;
 }
 @media (max-width: 768px) {
   .apartment-list {
-    grid-template-columns: 1fr; /* Cambia a una columna en pantallas más pequeñas */
+    grid-template-columns: 1fr; 
   }
 }
 </style>

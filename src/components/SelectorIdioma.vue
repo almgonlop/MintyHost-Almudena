@@ -66,11 +66,11 @@ export default {
   padding: 0.5rem;
   border-radius: 0.25rem;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.7); /* Cambia el último valor (0.7) para ajustar la transparencia */
+  background-color: rgba(255, 255, 255, 0.7);
 
   display: flex;
-  align-items: center; /* Centra verticalmente el emoji y el texto */
-  width: 100px; /* Establece un ancho fijo */
+  align-items: center; 
+  width: 100px; 
   transition: box-shadow 0.2s;
 }
 
@@ -104,8 +104,8 @@ export default {
   background-color: #c9ffd4;
 }
 .icon {
-  width: 16px; /* Ajusta el tamaño del icono según tus necesidades */
+  width: 16px; 
   height: 16px;
-  margin-right: 0.1rem; /* Ajusta el espacio entre el icono y el texto */
+  margin-right: 0.1rem; 
 }
 </style>

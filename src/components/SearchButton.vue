@@ -1,4 +1,3 @@
-<!-- SearchButton.vue -->
 <template>
   <button class="search-button" @click="filtrarYBuscar">
     <img class="icon" :src="require('@/assets/search.png')" alt="Search icon" />
@@ -10,7 +9,6 @@
 export default {
   methods: {
     filtrarYBuscar() {
-      // Emite el evento con la información necesaria
       this.$emit('filtrarYBuscar');
     },
   },
@@ -21,7 +19,7 @@ export default {
 .search-button {
   position: relative;
   display: flex;
-  justify-content: center; /* Centra los elementos horizontalmente */
+  justify-content: center; 
   align-items: center;
   padding: 0.5rem 1rem;
   border: 1px solid #006400;
@@ -29,8 +27,8 @@ export default {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.668);
   font-weight: 500;
-  margin-left: 10px; /* Ajusta el margen izquierdo según tus necesidades */
-  margin-right: 10px; /* Ajusta el margen derecho según tus necesidades */
+  margin-left: 10px; 
+  margin-right: 10px; 
 }
 
 .search-button:hover {

@@ -1,4 +1,3 @@
-<!-- ApartamentoCard.vue -->
 <template>
   <div class="apartment-card">
     
@@ -17,7 +16,7 @@
     <div class="text-container">
       <div class="title-container">
         <h3 class="titulo">{{ apartamento.apartment_title }}</h3>
-        <span class="precio">{{ apartamento.monthly_price }} €</span>
+        <span class="precio">{{ apartamento.monthly_price }} €/mes</span>
       </div>
       <p class="direccion">{{ apartamento.address }}</p>
       
@@ -48,7 +47,6 @@
                 <span class="tooltiptext">Calefacción</span>
             </div> 
           </li>
-          <!-- Agrega más amenities según sea necesario -->
         </ul>
       </div>
     </div>
@@ -82,23 +80,22 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos específicos para la tarjeta de apartamento */
 .apartment-card {
   display: flex;
-  justify-content: start; /* Alinea el contenido a la izquierda */
+  justify-content: start;
   border: 2px solid #009483;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
   width: 900px;
-  background-color: #ffffffdf; /* Fondo blanco o algún otro color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.314); /* Sombra suave */
+  background-color: #ffffffdf;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.314); 
   transition: box-shadow 0.3s ease;
 }
 
 .image-container {
   flex: 1;
-  max-width: 400px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+  max-width: 400px; 
 }
 
 .text-container {
@@ -110,12 +107,13 @@ export default {
 }
 .title-container {
   display: grid;
-  grid-template-columns: 1fr auto; /* El precio tiene prioridad automática */
-  align-items: baseline; /* Alinea el texto del precio con el texto del título */
+  grid-template-columns: 1fr auto; 
+  align-items: baseline; 
 }
 .apartment-card img {
   max-width: 100%;
   border-radius: 8px;
+  
 }
 
 .apartment-card:hover {
@@ -147,9 +145,7 @@ export default {
   justify-content: space-between;
 }
 
-.text-container p {
-  margin: 0;
-}
+
 
 .details-container {
   margin-top: 10px;
@@ -163,11 +159,7 @@ export default {
   margin-bottom: 5px;
 }
 
-.amenities ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+
 
 .amenities li {
   display: inline-block;
@@ -176,9 +168,9 @@ export default {
 }
 
 .icon {
-  width: 35px; /* Ajusta el tamaño del icono según tus necesidades */
+  width: 35px; 
   height: 35px;
-  margin-right: 0.1rem; /* Ajusta el espacio entre el icono y el texto */
+  margin-right: 0.1rem; 
 }
 
 .tooltip {
@@ -193,7 +185,7 @@ export default {
 
 .tooltiptext {
   visibility: hidden;
-  width: 120px; /* Ajusta el ancho del tooltip según tus necesidades */
+  width: 120px;
   background-color: #333;
   color: #fff;
   text-align: center;
@@ -203,24 +195,28 @@ export default {
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -60px; /* Ajusta el margen izquierdo según el ancho del tooltip */
+  margin-left: -60px; 
   opacity: 0;
   transition: opacity 0.3s;
 }
 @media (max-width: 600px) {
-  /* Aplicar estilos específicos para pantallas de hasta 600px de ancho */
   .apartment-card {
-    width: 100%; /* Ocupar todo el ancho disponible */
+    width: 100%; 
     flex-direction: column;
   }
 
   .text-container {
-    margin-top: 0; /* Eliminar el espacio superior en dispositivos móviles */
+    margin-top: 0;
   }
 
   .title-container {
-    flex-direction: column; /* Apila el título y el precio en dispositivos móviles */
-    align-items: flex-start;
+    flex-direction: column;
   }
+  .image-container {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: auto;
+  
+}
 }
 </style>

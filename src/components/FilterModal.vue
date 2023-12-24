@@ -62,22 +62,18 @@ export default {
   methods: {
     abrirModal() {
       this.mostrarModal = true;
-      // Agregar el manejador de clics en el documento al abrir el modal
       document.addEventListener('click', this.cerrarModalExterno);
     },
     cerrarModal() {
       this.mostrarModal = false;
-      // Eliminar el manejador de clics en el documento al cerrar el modal
       document.removeEventListener('click', this.cerrarModalExterno);
     },
     cerrarModalExterno(event) {
-      // Comprueba si el clic ocurrió fuera del modal y cierra el modal en ese caso
       if (this.$el && !this.$el.contains(event.target)) {
         this.cerrarModal();
       }
     },
     aplicarFiltros() {
-      // Emite el evento con la información necesaria
       this.$emit('aplicarFiltros', {
         rangoPrecio: { min: this.rangoPrecio.min, max: this.rangoPrecio.max },
         numDormitorios: this.numDormitorios,
@@ -93,47 +89,47 @@ export default {
 .filter-modal-container {
   position: relative;
   display: flex;
-  justify-content: center; /* Centra los elementos horizontalmente */
-  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: center; 
+  align-items: center; 
   
 }
 
 .btn-abrir-modal {
-  display: flex; /* Utiliza flexbox para alinear los elementos internos */
-  align-items: center; /* Alinea verticalmente los elementos */
+  display: flex; 
+  align-items: center; 
   padding: 0.5rem 1rem;
   border: 1px solid #006400;
   border-radius: 35px;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.668);
   font-weight: 500;
-  z-index: 2; /* Asegura que el botón esté por encima del contenido del modal */
+  z-index: 2; 
 }
 
 .icon {
-  width: 16px; /* Ajusta el tamaño del icono según tus necesidades */
+  width: 16px; 
   height: 16px;
-  margin-right: 0.2rem; /* Ajusta el espacio entre el icono y el texto */
+  margin-right: 0.2rem; 
   margin-top: 3px;
 }
 .modal-content label {
   display: block;
   margin-bottom: 5px;
-  color: black; /* Cambia el color del texto del label */
+  color: black; 
   font-weight: 500; 
-  /* Agrega otros estilos según tus preferencias */
+  
 }
 
 .modal-overlay {
   position: absolute;
-  top: 100%; /* Posiciona el modal debajo del botón */
-  left: 50%; /* Centra el modal horizontalmente en relación con el contenedor padre */
-  transform: translateX(-50%); /* Ajusta la posición horizontal del modal */
-  width: 400px; /* Ajusta el ancho del modal según tus necesidades */
+  top: 100%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 400px; 
   display: flex;
-  align-items: flex-start; /* Alinea el contenido del modal al inicio del contenedor */
+  align-items: flex-start; 
   justify-content: center;
-  z-index: 2; /* Asegura que el modal-overlay esté sobre otros elementos */
+  z-index: 2; 
 }
 
 .modal-content {
@@ -151,11 +147,11 @@ export default {
 
 .input-group {
   display: flex;
-  flex-direction: column; /* Alinea los elementos en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
+  flex-direction: column; 
+  align-items: center; 
   margin-bottom: 15px;
-  border-bottom: 1px solid #ddd; /* Línea debajo del campo numDormitorios */
-  padding-bottom: 5px; /* Ajusta el espaciado debajo de la línea según tus preferencias */
+  border-bottom: 1px solid #ddd; 
+  padding-bottom: 5px; 
   margin-bottom: 10px;
 }
 
@@ -172,7 +168,7 @@ export default {
 
 .btn-abrir-modal:hover {
   background-color: #c9ffd4;
-  transform: scale(1.05); /* Puedes ajustar el factor de escala según tus preferencias */
+  transform: scale(1.05); 
 }
 
 .fade-enter-active, .fade-leave-active {
