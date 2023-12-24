@@ -112,6 +112,7 @@ export default {
 @media (max-width: 800px) {
   .filtro-panel {
     flex-direction: column;
+    border-radius: 50px;
   }
   .barrio-select,
   .filter-modal,

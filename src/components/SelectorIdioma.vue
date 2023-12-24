@@ -85,10 +85,9 @@ export default {
   left: 0;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid #006400;
   border-top: none;
-  border-radius: 0 0 0.25rem 0.25rem;
-  box-shadow: 0 10px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   max-height: 200px;
   overflow-y: auto;
   z-index: 1;

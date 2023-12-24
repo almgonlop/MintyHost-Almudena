@@ -9,7 +9,7 @@
         <div class="modal-content" @click.stop>
           <label for="rangoPrecio">Rango de precios:</label>
           <div class="input-group">
-            <input id="rangoPrecioMin" type="number" v-model="rangoPrecio.min" placeholder="Precio mínimo">
+            <input id="rangoPrecioMin" type="number" v-model="rangoPrecio.min" placeholder="Precio mínimo" class="mb-3">
             <input id="rangoPrecioMax" type="number" v-model="rangoPrecio.max" placeholder="Precio máximo">
           </div>
           
@@ -137,6 +137,7 @@ export default {
 }
 
 .modal-content {
+  text-align: center;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);

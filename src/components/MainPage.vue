@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="fondo">
+    <div class="contenido">
     <NavbarResponsive />
     <div class="container mx-auto mt-7">
       <FiltrosPanel @filtrarApartamentos="filtrarApartamentos" />
@@ -13,6 +14,7 @@
         <p>Selecciona un barrio y aplica filtros para buscar apartamentos.</p>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -74,5 +76,35 @@ export default {
   margin-top: 20px; /* Ajusta la separación según tus necesidades */
   font-weight: bolder;
   font-size: x-large;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px; /* Ajusta el radio de las esquinas según tus necesidades */
+  padding: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fondo{
+  background-image: url('@/assets/imagen.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* Color blanco semitransparente */
+  overflow: hidden; /* Evita el desbordamiento horizontal */
+}
+.fondo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* Color blanco semitransparente */
+  z-index: 1; /* Asegura que esta capa esté encima de la imagen de fondo */
+}
+.contenido{
+  position: relative;
+  z-index: 2;
 }
 </style>

@@ -14,20 +14,39 @@
       </Swiper>
     </div>
     <div class="text-container">
-      <h3 class="titulo">{{ apartamento.apartment_title }}</h3>
+      <div class="title-container">
+        <h3 class="titulo">{{ apartamento.apartment_title }}</h3>
+        <span class="precio">{{ apartamento.monthly_price }} €</span>
+      </div>
       <p class="direccion">{{ apartamento.address }}</p>
-      <!-- Otros detalles del apartamento aquí -->
-      <p>Precio Mensual: {{ apartamento.monthly_price }} €</p>
-      <p>Hasta {{ apartamento.accommodates_max }} huéspedes</p>
-      <p>{{ apartamento.square_meter }} m²</p>
-      <p>Dormitorios: {{ apartamento.bedrooms }}</p>
-      <p>Cuarto de baños: {{ apartamento.bathrooms }}</p>
+      
+      <div class="details-container">
+        <p><strong>Hasta:</strong> {{ apartamento.accommodates_max }} huéspedes</p>
+        <p><strong>Tamaño:</strong> {{ apartamento.square_meter }} m²</p>
+        <p><strong>Dormitorios:</strong> {{ apartamento.bedrooms }}</p>
+        <p><strong>Cuarto de baños:</strong> {{ apartamento.bathrooms }}</p>
+    </div>
       <div class="amenities">
-        <p>Comodidades:</p>
         <ul>
-          <li v-if="apartamento.amenities.wifi">Wifi</li>
-          <li v-if="apartamento.amenities['A/C']">Aire acondicionado</li>
-          <li v-if="apartamento.amenities.heating">Calefacción</li>
+          <li v-if="apartamento.amenities.wifi">
+            
+            <div class="tooltip">
+              <img class="icon" src="@/assets/wi-fi.png" alt="Wifi Icon" title="Wifi">
+                <span class="tooltiptext">Wi-fi</span>
+            </div> 
+          </li>
+          <li v-if="apartamento.amenities['A/C']">
+            <div class="tooltip">
+              <img class="icon" src="@/assets/air-conditioner.png" alt="Aire Acondicionado" title="Wifi">
+                <span class="tooltiptext">Aire Acondicionado</span>
+            </div> 
+          </li>
+          <li v-if="apartamento.amenities.heating">
+            <div class="tooltip">
+              <img class="icon" src="@/assets/fire.png" alt="Calefacción" title="Wifi">
+                <span class="tooltiptext">Calefacción</span>
+            </div> 
+          </li>
           <!-- Agrega más amenities según sea necesario -->
         </ul>
       </div>
@@ -65,11 +84,14 @@ export default {
 /* Estilos específicos para la tarjeta de apartamento */
 .apartment-card {
   display: flex;
+  justify-content: start; /* Alinea el contenido a la izquierda */
   border: 2px solid #009483;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
-  max-width: 80%; 
+  width: 900px;
+  background-color: #ffffffdf; /* Fondo blanco o algún otro color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.314); /* Sombra suave */
   transition: box-shadow 0.3s ease;
 }
 
@@ -79,10 +101,17 @@ export default {
 }
 
 .text-container {
-  flex: 2;
-  padding-left: 20px; /* Ajusta el espaciado entre la imagen y el texto según sea necesario */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 20px;
 }
-
+.title-container {
+  display: grid;
+  grid-template-columns: 1fr auto; /* El precio tiene prioridad automática */
+  align-items: baseline; /* Alinea el texto del precio con el texto del título */
+}
 .apartment-card img {
   max-width: 100%;
   border-radius: 8px;
@@ -92,8 +121,105 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.titulo{
+.precio {
+  font-size: large;
+  font-weight: bold;
+}
+
+.direccion {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.text-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.titulo {
+  margin-bottom: 10px;
   font-size: x-large;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-container p {
+  margin: 0;
+}
+
+.details-container {
+  margin-top: 10px;
+}
+
+.amenities {
+  margin-top: 10px;
+}
+
+.amenities p {
+  margin-bottom: 5px;
+}
+
+.amenities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.amenities li {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 0.9rem;
+}
+
+.icon {
+  width: 35px; /* Ajusta el tamaño del icono según tus necesidades */
+  height: 35px;
+  margin-right: 0.1rem; /* Ajusta el espacio entre el icono y el texto */
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px; /* Ajusta el ancho del tooltip según tus necesidades */
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px; /* Ajusta el margen izquierdo según el ancho del tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+@media (max-width: 600px) {
+  /* Aplicar estilos específicos para pantallas de hasta 600px de ancho */
+  .apartment-card {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    flex-direction: column;
+  }
+
+  .text-container {
+    margin-top: 0; /* Eliminar el espacio superior en dispositivos móviles */
+  }
+
+  .title-container {
+    flex-direction: column; /* Apila el título y el precio en dispositivos móviles */
+    align-items: flex-start;
+  }
 }
 </style>

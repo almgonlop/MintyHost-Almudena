@@ -34,7 +34,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Centra las tarjetas horizontalmente */
-  gap: 20px;
   margin-top: 20px;
 }
 @media (max-width: 768px) {

@@ -104,6 +104,7 @@ selectBarrio(barrio) {
   font-weight: 500;
   color: black;
   
+  
 }
 
 .selected-option:hover{
@@ -118,8 +119,7 @@ selectBarrio(barrio) {
 .options {
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
+  width: 70%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -128,6 +128,7 @@ selectBarrio(barrio) {
   transition: opacity 0.2s;
   opacity: 1;
   z-index: 4;
+  text-align: center;
 }
 
 
