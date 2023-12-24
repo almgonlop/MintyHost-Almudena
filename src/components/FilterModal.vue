@@ -18,7 +18,7 @@
           <input id="numDormitorios" type="number" v-model="numDormitorios" placeholder="Añade un número">
         </div>
           
-          <label for="capacidadMaxima">Capacidad Máxima de Huéspedes:</label>
+          <label for="capacidadMaxima">Huéspedes:</label>
           <div class="input-group">
           <input id="capacidadMaxima" type="number" v-model="capacidadMaxima" placeholder="Añade un número">
         </div>
