@@ -2,7 +2,7 @@
   <div class="filter-modal-container">
     
     <button @click="abrirModal" class="btn-abrir-modal">
-      <img class="icon" :src="require('@/assets/filter.png')" alt="House icon" />!Pulsa aquí para aplicar filtros a la busqueda!</button>
+      <img class="icon" :src="require('@/assets/filter.png')" alt="House icon" />¡Pulsa aquí para aplicar filtros a la busqueda!</button>
     
     <transition name="fade">
       <div v-if="mostrarModal" class="modal-overlay" @click="cerrarModal">
@@ -15,12 +15,12 @@
           
           <label for="numDormitorios">Número de Dormitorios:</label>
           <div class="input-group">
-          <input id="numDormitorios" type="number" v-model="numDormitorios">
+          <input id="numDormitorios" type="number" v-model="numDormitorios" placeholder="Añade un número">
         </div>
           
           <label for="capacidadMaxima">Capacidad Máxima de Huéspedes:</label>
           <div class="input-group">
-          <input id="capacidadMaxima" type="number" v-model="capacidadMaxima">
+          <input id="capacidadMaxima" type="number" v-model="capacidadMaxima" placeholder="Añade un número">
         </div>
         </div>
       </div>
@@ -34,11 +34,11 @@ export default {
     return {
       mostrarModal: false,
       rangoPrecio: {
-        min: 1,
-        max: 30000,
+        min: null,
+        max: null,
       },
-      numDormitorios: 1,
-      capacidadMaxima: 3,
+      numDormitorios: null,
+      capacidadMaxima: null,
     };
   },
   watch: {

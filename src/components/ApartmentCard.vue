@@ -82,7 +82,7 @@ export default {
 <style scoped>
 .apartment-card {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   border: 2px solid #009483;
   margin-bottom: 10px;
   padding: 10px;

@@ -2,19 +2,19 @@
 <template>
   <nav class="bg-green-900 p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <div class="md:flex items-center">
+      <div class="lg:flex items-center">
         <LogoMintyHost />
       </div>
 
-      <div class="hidden md:flex space-x-4 text-white">
+      <div class="hidden lg:flex space-x-4 text-white">
         <ListadoPaginas />
       </div>
 
-      <div class="hidden md:flex">
+      <div class="hidden lg:flex">
         <SelectorIdioma />
       </div>
 
-      <div class="md:hidden">
+      <div class="lg:hidden">
         <button @click="toggleNavbar" class="hamburger-btn">
           <svg
             class="h-6 w-6"
@@ -60,7 +60,7 @@ export default {
     };
   },
   created() {
-    this.listadoClass = window.innerWidth < 770 ? 'flex flex-col p-4' : 'flex';
+    this.listadoClass = window.innerWidth < 768 ? 'flex flex-col p-4' : 'flex';
 
     window.addEventListener('resize', this.handleResize);
   },
@@ -76,7 +76,7 @@ export default {
       this.navbarOpen = false;
     },
     handleResize() {
-      if (this.navbarOpen && window.innerWidth >= 770) {
+      if (this.navbarOpen && window.innerWidth >= 768) {
         this.navbarOpen = false;
       }
     },
