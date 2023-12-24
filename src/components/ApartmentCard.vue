@@ -1,6 +1,7 @@
 <!-- ApartamentoCard.vue -->
 <template>
   <div class="apartment-card">
+    
     <div class="image-container">
       <Swiper
         :pagination="{ type: 'progressbar' }"
