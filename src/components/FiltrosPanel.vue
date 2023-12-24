@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <BarrioSelect @barrioSeleccionado="actualizarBarrio" />
-    <FilterModal @aplicarFiltros="aplicarFiltros" />
-    <SearchButton @filtrarYBuscar="filtrarYBuscar" />
+  <div class="filtro-panel">
+    <BarrioSelect class="barrio-select" @barrioSeleccionado="actualizarBarrio" />
+    <FilterModal class="filter-modal" @aplicarFiltros="aplicarFiltros" />
+    <SearchButton class="search-button" @filtrarYBuscar="filtrarYBuscar" />
   </div>
 </template>
 
@@ -80,5 +80,44 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos específicos para el panel de filtros */
+.filtro-panel {
+  padding: 0.5rem;
+  border: 2px solid #FFD558;
+  background-color: #FFD558;
+  border-radius: 999px;
+  display: flex;
+  justify-content: space-around; /* Ajusta según tu preferencia */
+  align-items: center;
+  max-width: 950px;
+  margin: 0 auto;
+}
+.barrio-select {
+  flex: 1; /* Hace que BarrioSelect tome todo el espacio disponible */
+  
+}
+
+.filter-modal {
+  /* Agrega estilos según sea necesario */
+  flex: 2;
+}
+
+.search-button {
+  flex: 3;
+  margin-right: 25px;
+  max-width: 200px;
+  /* Agrega estilos según sea necesario */
+}
+
+/* Responsive layout - cambia a diseño de columna en lugar de dos columnas */
+@media (max-width: 800px) {
+  .filtro-panel {
+    flex-direction: column;
+  }
+  .barrio-select,
+  .filter-modal,
+  .search-button {
+    margin-bottom: 10px; /* Ajusta el margen inferior según tus necesidades */
+  }
+  
+}
 </style>

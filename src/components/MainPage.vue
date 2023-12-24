@@ -5,11 +5,11 @@
       <FiltrosPanel @filtrarApartamentos="filtrarApartamentos" />
       <ApartmentList :apartamentos="apartamentosFiltrados" />
       <!-- Mostrar mensaje si no hay resultados -->
-      <div v-if="sinResultados">
+      <div v-if="sinResultados" class="mensaje">
         <p>No se encontraron apartamentos con los filtros seleccionados.</p>
       </div>
       <!-- Mostrar mensaje por defecto -->
-      <div v-else-if="apartamentosFiltrados.length === 0">
+      <div v-else-if="apartamentosFiltrados.length === 0" class="mensaje">
         <p>Selecciona un barrio y aplica filtros para buscar apartamentos.</p>
       </div>
     </div>
@@ -70,5 +70,9 @@ export default {
 </script>
 
 <style scoped>
-/* Estilos específicos para la página principal */
+.mensaje {
+  margin-top: 20px; /* Ajusta la separación según tus necesidades */
+  font-weight: bolder;
+  font-size: x-large;
+}
 </style>

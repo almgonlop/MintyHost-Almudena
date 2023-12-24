@@ -78,9 +78,6 @@ export default {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.633);
 }
 
-.emoji {
-  margin-right: 0.5rem; /* Ajusta el espacio entre el emoji y el texto */
-}
 
 .options {
   position: absolute;

@@ -1,23 +1,58 @@
 <template>
-  <select v-model="selectedBarrio" @change="emitBarrioSeleccionado">
-    <option v-for="barrio in barrios" :key="barrio.id" :value="barrio.id">{{ barrio.name }}</option>
-  </select>
+  <div class="custom-dropdown" ref="dropdown" @click="toggleDropdown">
+    <div class="selected-option" :class="{ 'placeholder': !nombre }">
+      <img class="icon" :src="require('@/assets/house.png')" alt="House icon" />
+      {{ nombre || 'Elige un barrio' }}
+    </div>
+    <ul v-show="isDropdownVisible" class="options">
+      <li v-for="barrio in barrios" :key="barrio.id" @click="selectBarrio(barrio)">
+        {{ barrio.name }}
+      </li>
+    </ul>
+  </div>
 </template>
+
 
 <script>
 import axios from 'axios';
 
+
 export default {
   data() {
     return {
+      nombre:null,
       selectedBarrio: null,
       barrios: [],
+      isDropdownVisible: false,
     };
   },
-  mounted() {
-    this.cargarBarrios();
-  },
   methods: {
+    toggleDropdown() {
+      this.isDropdownVisible = !this.isDropdownVisible;
+      if (this.isDropdownVisible) {
+        // Agrega un manejador de eventos al documento para cerrar el desplegable
+        document.addEventListener('click', this.closeDropdownHandler);
+      }
+    },
+    closeDropdownHandler(event) {
+      // Espera al próximo ciclo de actualización de Vue antes de acceder a $refs
+      this.$nextTick(() => {
+        // Verifica si el clic fue fuera del elemento .custom-dropdown
+        if (this.$refs.dropdown && !this.$refs.dropdown.contains(event.target)) {
+          this.isDropdownVisible = false;
+          document.removeEventListener('click', this.closeDropdownHandler);
+        }
+      });
+    },
+selectBarrio(barrio) {
+  this.nombre = barrio.name; // Cambia a barrio.id en lugar de barrio.name
+  this.selectedBarrio = barrio.id; // Cambia a barrio.id en lugar de barrio.name
+  this.isDropdownVisible = false;
+  document.removeEventListener('click', this.closeDropdownHandler);
+
+  // Llama a la función emitBarrioSeleccionado aquí
+  this.emitBarrioSeleccionado();
+},
     cargarBarrios() {
       axios.get('https://api.dev.myplazze.com/api/v1/practice/barrios')
         .then(response => {
@@ -29,18 +64,87 @@ export default {
         });
     },
     emitBarrioSeleccionado() {
-  const barrioSeleccionado = this.barrios.find(barrio => barrio.id === this.selectedBarrio);
-  console.log('Barrio seleccionado (ID):', this.selectedBarrio);
-  console.log('Barrio seleccionado (objeto):', barrioSeleccionado);
-  this.$emit('barrioSeleccionado', barrioSeleccionado);
-}
-
-
+      const barrioSeleccionado = this.barrios.find(barrio => barrio.id === this.selectedBarrio);
+      console.log('Barrio seleccionado (ID):', this.selectedBarrio);
+      console.log('Barrio seleccionado (objeto):', barrioSeleccionado);
+      this.$emit('barrioSeleccionado', barrioSeleccionado);
+    },
+  },
+  mounted() {
+    this.cargarBarrios();
+  },
+  beforeUnmount() {
+    // Asegúrate de limpiar el manejador de eventos al destruir el componente
+    document.removeEventListener('click', this.closeDropdownHandler);
   },
 };
 </script>
 
 
+
 <style scoped>
-/* Estilos específicos para el selector de barrios */
+.custom-dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center;
+  
+  
+}
+
+
+.selected-option {
+  display: flex;
+  color: #006400;
+  padding: 0.5rem 1rem;
+  border: 1px solid #006400;
+  border-radius: 35px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.668);
+  font-weight: 500;
+  color: black;
+  
+}
+
+.selected-option:hover{
+  background-color: #c9ffd4;
+  transform: scale(1.05);
+
+}
+
+
+
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+  transition: opacity 0.2s;
+  opacity: 1;
+  z-index: 4;
+}
+
+
+.options li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+
+.options li:hover {
+  background-color: #c9ffd4;
+}
+.icon {
+  width: 16px; /* Ajusta el tamaño del icono según tus necesidades */
+  height: 16px;
+  margin-right: 0.2rem; /* Ajusta el espacio entre el icono y el texto */
+  margin-top: 3px;
+}
 </style>
+

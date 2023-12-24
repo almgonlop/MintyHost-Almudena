@@ -31,8 +31,15 @@ export default {
 <style scoped>
 /* Estilos específicos para la lista de apartamentos */
 .apartment-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra las tarjetas horizontalmente */
   gap: 20px;
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  .apartment-list {
+    grid-template-columns: 1fr; /* Cambia a una columna en pantallas más pequeñas */
+  }
 }
 </style>

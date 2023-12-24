@@ -38,7 +38,7 @@
       </div>
 
       <!-- Responsive Navbar Links (Mobile) -->
-      <div class="mobile-menu" :class="{ 'hidden': !navbarOpen }">
+      <div class="mobile-menu" :class="{ 'hidden': !navbarOpen }" @click="closeNavbarOutside">
         <div class="mobile-menu-content">
           <ListadoPaginas class="mb-5"/>
           <SelectorIdioma />
@@ -89,6 +89,12 @@ export default {
         this.navbarOpen = false;
       }
     },
+    closeNavbarOutside(event) {
+      // Cierra el menú si está abierto y el clic ocurrió fuera del menú
+      if (this.navbarOpen && !this.$el.contains(event.target)) {
+        this.closeNavbar();
+      }
+    },
   },
 };
 </script>
@@ -122,6 +128,7 @@ export default {
   background-color: #16BCA9;
   padding: 1rem;
   border-radius: 8px;
+  z-index: 5;
 }
 .mobile-menu-content {
   padding: 1rem; /* Ajusta el margen interior según tus necesidades */

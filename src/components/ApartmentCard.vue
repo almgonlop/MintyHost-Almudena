@@ -1,21 +1,23 @@
+<!-- ApartamentoCard.vue -->
 <template>
   <div class="apartment-card">
-    <Swiper
-    :pagination="{
-      type: 'progressbar',
-    }"
-    :navigation="true"
-    :modules="modules"
-    class="mySwiper"
-    >
-      <SwiperSlide v-for="(image, index) in apartamento.pic" :key="index">
-        <img :src="image" alt="Apartment Photo" class="apartment-image" />
-      </SwiperSlide>
-    </Swiper>
-    <h3>{{ apartamento.apartment_title }}</h3>
-    <p>{{ apartamento.address }}</p>
-    <!-- Agrega aquí más detalles del apartamento -->
-    <p>Precio Mensual: {{ apartamento.monthly_price }} €</p>
+    <div class="image-container">
+      <Swiper
+        :pagination="{ type: 'progressbar' }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper"
+      >
+        <SwiperSlide v-for="(image, index) in apartamento.pic" :key="index">
+          <img :src="image" alt="Apartment Photo" class="apartment-image" />
+        </SwiperSlide>
+      </Swiper>
+    </div>
+    <div class="text-container">
+      <h3 class="titulo">{{ apartamento.apartment_title }}</h3>
+      <p class="direccion">{{ apartamento.address }}</p>
+      <!-- Otros detalles del apartamento aquí -->
+      <p>Precio Mensual: {{ apartamento.monthly_price }} €</p>
       <p>Hasta {{ apartamento.accommodates_max }} huéspedes</p>
       <p>{{ apartamento.square_meter }} m²</p>
       <p>Dormitorios: {{ apartamento.bedrooms }}</p>
@@ -29,6 +31,7 @@
           <!-- Agrega más amenities según sea necesario -->
         </ul>
       </div>
+    </div>
   </div>
 </template>
 
@@ -41,41 +44,56 @@ import { Pagination, Navigation } from 'swiper/modules';
 
 export default {
   components: {
-      Swiper,
-      SwiperSlide,
-    },
+    Swiper,
+    SwiperSlide,
+  },
   props: {
     apartamento: {
       type: Object,
       required: true,
     },
-  },    
+  },
   setup() {
-      return {
-        modules: [Pagination, Navigation],
-      };
-    },
+    return {
+      modules: [Pagination, Navigation],
+    };
+  },
 };
 </script>
 
 <style scoped>
-/* Agrega estilos según sea necesario */
+/* Estilos específicos para la tarjeta de apartamento */
 .apartment-card {
-  border: 1px solid #ccc;
+  display: flex;
+  border: 2px solid #009483;
+  margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
+  max-width: 80%; 
   transition: box-shadow 0.3s ease;
-  text-align: center; /* Centrar la imagen */
+}
+
+.image-container {
+  flex: 1;
+  max-width: 400px; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+}
+
+.text-container {
+  flex: 2;
+  padding-left: 20px; /* Ajusta el espaciado entre la imagen y el texto según sea necesario */
 }
 
 .apartment-card img {
-  max-width: 100%; /* Asegurar que la imagen no se desborde del contenedor */
-  border-radius: 8px; /* Opcional: redondear las esquinas de la imagen */
+  max-width: 100%;
+  border-radius: 8px;
 }
 
 .apartment-card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
+.titulo{
+  font-size: x-large;
+  font-weight: bold;
+}
 </style>
